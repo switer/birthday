@@ -38,7 +38,14 @@
         },
         ready: function () {
             setInterval(function () {
-                this.$data.time = diffTime()
+                var cakeImage = document.querySelector('.cake img')
+                var time = diffTime()
+                this.$data.time = time > 0 ? time:0
+                if (!time) {
+                    cakeImage.src = 'images/cake.webp'
+                } else {
+                    cakeImage.src = 'images/cake-unfired.webp'
+                }
             }.bind(this), 500)
         },
         methods: {}
