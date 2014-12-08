@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mandy Happy Birthday</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
+    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+    <script src="parallax.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/0.11.4/vue.min.js"></script>
+</head>
+<body>
+    <div class="hero">Happy birthday to danyan(mandy)</div>
+    <danyan id="scene">
+        <mandy class="layer" data-depth="0.00"><img src="images/bg.webp"></mandy>
+        <birthday class="layer" data-depth="0.00">
+            <div class="cover c1"><img src="images/pins/pin-caomei.webp" alt=""></div>
+            <div class="cover c2"><img src="images/pins/pin-shenzhen.webp" alt=""></div>
+            <div class="cover c3"><img src="images/pins/pin-tianmengou.webp" alt=""></div>
+            <div class="cover c4"><img src="images/pins/pin-luoping.webp" alt=""></div>
+        </birthday>
+        <from class="layer" data-depth="0.00" id="countdown">
+            <div class="calendar" v-html="time | dateTime 'dd day hh hours mm minute ss second' "></div>
+        </from>
+        <happy class="layer" data-depth="0.50"><img src="images/cate.png"></happy>
+    </danyan>
+    <script>
+        var scene = document.getElementById('scene');
+        var parallax = new Parallax(scene);
+    </script>
+    <script src="countdown.js"></script>
+</body>
+</html>
