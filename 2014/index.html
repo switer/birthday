@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Mandy Happy Birthday</title>
@@ -11,25 +12,43 @@
     <script src="parallax.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/0.11.4/vue.min.js"></script>
 </head>
+
 <body>
     <div class="hero">Happy birthday to danyan(mandy)</div>
     <danyan id="scene">
-        <mandy class="layer" data-depth="0.00"><img src="images/bg.webp"></mandy>
+        <mandy class="layer" data-depth="0.00">
+            <img src="images/bg.webp">
+        </mandy>
         <birthday class="layer" data-depth="0.00">
-            <div class="cover c1"><img src="images/pins/pin-caomei.webp" alt=""></div>
-            <div class="cover c2"><img src="images/pins/pin-shenzhen.webp" alt=""></div>
-            <div class="cover c3"><img src="images/pins/pin-tianmengou.webp" alt=""></div>
-            <div class="cover c4"><img src="images/pins/pin-luoping.webp" alt=""></div>
+            <div class="cover c1">
+                <img src="images/pins/pin-caomei.webp" alt="">
+            </div>
+            <div class="cover c2">
+                <img src="images/pins/pin-shenzhen.webp" alt="">
+            </div>
+            <div class="cover c3">
+                <img src="images/pins/pin-tianmengou.webp" alt="">
+            </div>
+            <div class="cover c4">
+                <img src="images/pins/pin-luoping.webp" alt="">
+            </div>
         </birthday>
         <from class="layer" data-depth="0.00" id="countdown">
-            <div class="calendar" v-html="time | dateTime 'dd day hh hours mm minute ss second' "></div>
+            <div class="calendar" v-if="!timenow && !done" v-html="time | dateTime 'dd day hh hours mm minute ss second' "></div>
+            <switer class="wish" v-if="timenow" v-on="click: wish" v-class="wished: done">
+                <img src="images/make-wish.png" alt="">
+                <span>亲，许愿完点一下~喵</span>
+            </switer>
         </from>
-        <happy class="layer cake" data-depth="0.50"><img src=""></happy>
+        <happy class="layer cake" data-depth="0.50">
+            <img src="">
+        </happy>
     </danyan>
     <script>
-        var scene = document.getElementById('scene');
-        var parallax = new Parallax(scene);
+    var scene = document.getElementById('scene');
+    var parallax = new Parallax(scene);
     </script>
     <script src="countdown.js"></script>
 </body>
+
 </html>

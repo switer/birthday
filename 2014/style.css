@@ -1,10 +1,12 @@
-body {background-color: #c7d2d6;padding: 0;margin: 0;font-family: 'Indie Flower', cursive;}
+body {background-color: #c7d2d6;padding: 0;margin: 0;font-family: 'Indie Flower', '微软雅黑', cursive;}
 
 .hero {position: absolute;z-index: 10;left: 0;top: 15px;margin: auto;font-size: 50px
-    ;text-align: center;width: 100%;font-family: 'Tangerine', serif;}
+    ;text-align: center;width: 100%;font-family: 'Tangerine', serif;
+    -webkit-transition: top 3s ease, font-size 3s ease;-webkit-transition-delay:1s;}
+.hero.wished {top: 260px;font-size: 80px;text-shadow:0 0 10px rgb(75, 75, 160);}
 danyan {width: 100%;height: 100%;position: absolute;top: 0;left: 0;overflow: hidden;}
 mandy img {width: 100%;height: auto}
-happy {text-align: center;height: 100%;width: 100%;position: absolute;}
+happy {text-align: center;height: 100%;width: 100%;position: absolute;pointer-events:none;}
 happy img {width: 1000px;height: auto;position: absolute;
     bottom: -150px;left: 0;right: 0;margin: auto;}
 
@@ -28,3 +30,8 @@ birthday .cover.c4 {right: 30px;top: 160px;-webkit-transform:rotate(-10deg);}
     .calendar img {width: 72px;height: 80px;border-radius: 10px;margin: 10px;vertical-align: middle;
         box-shadow: 0 0 10px 4px rgba(0,0,0,.1)}
     /*.calendar img.small {width: 36px;height: 56px;}*/
+    .wish {position: absolute;left: 0;right: 0;top: 220px;margin: auto;width: auto;
+        text-align: center;cursor: pointer; -webkit-transition: top 5s ease-out;}
+    .wish img{width: 300px;height: auto;vertical-align: -180px;}
+    .wish span{margin-left: -50px;}
+    .wish.wished {top: -400px;}

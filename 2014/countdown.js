@@ -7,7 +7,9 @@
     var countdown = new Vue({
         el: '#countdown',
         data: {
-            time: diffTime()
+            time: diffTime(),
+            timenow: false,
+            done: !!localStorage.getItem('wished')
         },
         filters: {
             dateTime: function (time, template) {
@@ -42,13 +44,35 @@
                 var time = diffTime()
                 this.$data.time = time > 0 ? time:0
                 if (!time) {
+                    this.$data.timenow = true
                     cakeImage.src = 'images/cake.webp'
                 } else {
                     cakeImage.src = 'images/cake-unfired.webp'
                 }
+                if (!time && this.$data.done) {
+                    cakeImage.src = 'images/cake-fired.webp'
+                }
+
             }.bind(this), 500)
+            if (this.$data.done) {
+                var hero = document.querySelector('.hero')
+                hero.className = hero.className + ' wished'
+            }
         },
-        methods: {}
+        methods: {
+            wish: function (e) {
+                localStorage.setItem('wished', true)
+                var tar = e.currentTarget
+
+                // tar.className = tar.className + ' wished'
+                this.$data.done = true
+                var cakeImage = document.querySelector('.cake img')
+                cakeImage.src = 'images/cake-fired.webp'
+
+                var hero = document.querySelector('.hero')
+                hero.className = hero.className + ' wished'
+            }
+        }
     })
     exports.module = countdown;
 }(window);
