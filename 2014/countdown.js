@@ -18,7 +18,7 @@
 
 
     function diffTime () {
-        return (+ new Date('2014-12-11T00:00:00.000Z')) - (new Date)
+        return (+ new Date('2014-12-11T00:00:00.000+0800')) - (new Date)
     }
     var countdown = new Vue({
         el: '#countdown',
