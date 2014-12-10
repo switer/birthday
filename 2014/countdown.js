@@ -60,7 +60,7 @@
                 var cakeImage = document.querySelector('.cake img')
                 var time = diffTime()
                 this.$data.time = time > 0 ? time:0
-                if (!time) {
+                if (!this.$data.time) {
                     if (!isPlay && this.$data.done) {
                         isPlay = true
                         if (this.wishProcessing) {
