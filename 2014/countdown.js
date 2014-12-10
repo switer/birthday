@@ -1,15 +1,33 @@
 !function (exports) {
     'use strict;'
 
+    var music = new Audio()
+    music.src = 'http://switer.qiniudn.com/my.mp3'
+    music.autoplay = false
+    music.loop = true
+    music.volume = 1
+    music.load()
+
+    var song = new Audio()
+    var isPlay = false
+    song.src = 'http://switer.qiniudn.com/2014-2.m4a'
+    song.autoplay = false
+    song.loop = true
+    song.volume = 1
+    song.load()
+
+
     function diffTime () {
-        return (+ new Date('2014-12-11T00:00:00.000Z')) - (new Date)
+        return 0
+        // return (+ new Date('2014-12-11T00:00:00.000Z')) - (new Date)
     }
     var countdown = new Vue({
         el: '#countdown',
         data: {
             time: diffTime(),
             timenow: false,
-            done: !!localStorage.getItem('wished')
+            done: !!localStorage.getItem('wished'),
+            wishProcessing: false
         },
         filters: {
             dateTime: function (time, template) {
@@ -44,6 +62,18 @@
                 var time = diffTime()
                 this.$data.time = time > 0 ? time:0
                 if (!time) {
+                    if (!isPlay && this.$data.done) {
+                        isPlay = true
+                        if (this.wishProcessing) {
+                            setTimeout(function () {
+                                music.pause()
+                                song.play()
+                            }, 30*1000)
+                        } else {
+                            music.pause()
+                            song.play()
+                        }
+                    }
                     this.$data.timenow = true
                     cakeImage.src = 'images/cake.webp'
                 } else {
@@ -61,16 +91,18 @@
         },
         methods: {
             wish: function (e) {
+                this.$data.wishProcessing = true
                 localStorage.setItem('wished', true)
                 var tar = e.currentTarget
 
-                // tar.className = tar.className + ' wished'
                 this.$data.done = true
                 var cakeImage = document.querySelector('.cake img')
                 cakeImage.src = 'images/cake-fired.webp'
 
                 var hero = document.querySelector('.hero')
                 hero.className = hero.className + ' wished'
+
+                music.play()
             }
         }
     })

@@ -37,8 +37,11 @@
             <div class="calendar" v-if="!timenow && !done" v-html="time | dateTime 'dd day hh hours mm minute ss second' "></div>
             <switer class="wish" v-if="timenow" v-on="click: wish" v-class="wished: done">
                 <img src="images/make-wish.png" alt="">
-                <span>亲，许愿完点一下~喵</span>
+                <span>你就稍微点一下~喵</span>
             </switer>
+<!--             <div class="video" v-if="done">
+                <img src="http://switer.qiniudn.com/my.gif" alt="">
+            </div> -->
         </from>
         <happy class="layer cake" data-depth="0.50">
             <img src="">
